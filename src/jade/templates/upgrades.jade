@@ -1,0 +1,34 @@
+script(type="text/ng-template", id="upgrades")
+  .col-md-12.margin-bottom-15
+    .row.padding-left-15
+      .col-xs-4(uib-tooltip="Score Points (SP) are earned by taking steps and earning score. They are used to upgrade your adventurers.", tooltip-placement="top", tooltip-append-to-body="true")
+        span SP
+        span.pull-right {{currencyDataManager.currency.sp | number:0}}
+      .col-xs-4(uib-tooltip="Kill Points (KP) are earned by killing monsters. They are used to upgrade your monsters.", tooltip-placement="top", tooltip-append-to-body="true")
+        span KP
+        span.pull-right {{currencyDataManager.currency.kp | number:0}}
+      .col-xs-4(uib-tooltip="Victory Points (VP) are earned by winning the game. They are used to upgrade your dungeon.", tooltip-placement="top", tooltip-append-to-body="true")
+        span VP
+        span.pull-right {{currencyDataManager.currency.vp | number:0}}
+
+  .col-md-4(fill-height, offset="390")
+    .row.padding-left-15(ng-if="spUpgrades.length === 0")
+      .col-xs-12 No upgrades available
+    .row.padding-left-15.margin-bottom-15(ng-repeat="upgrade in spUpgrades = (upgrades | orderBy:'name' | visibleUpgrades:'sp')", ng-include="'upgrade-block'")
+
+  .col-md-4(fill-height, offset="390")
+    .row.padding-left-15(ng-if="kpUpgrades.length === 0")
+      .col-xs-12 No upgrades available
+    .row.padding-left-15.margin-bottom-15(ng-repeat="upgrade in kpUpgrades = (upgrades | orderBy:'name' | visibleUpgrades:'kp')", ng-include="'upgrade-block'")
+
+  .col-md-4(fill-height, offset="390")
+    .row.padding-left-15(ng-if="vpUpgrades.length === 0")
+      .col-xs-12 No upgrades available
+    .row.padding-left-15.margin-bottom-15(ng-repeat="upgrade in vpUpgrades = (upgrades | orderBy:'name' | visibleUpgrades:'vp')", ng-include="'upgrade-block'")
+
+script(type="text/ng-template", id="upgrade-block")
+  .col-xs-12(uib-tooltip="{{upgrade.help}}", tooltip-placement="right", tooltip-append-to-body="true") {{upgrade.name}}
+  .col-xs-6
+    span {{upgrade.cost | number:0}} {{upgrade.currency | uppercase}}
+  .col-xs-6
+    button.btn.btn-link.margin-0(ng-disabled="currencyDataManager.currency[upgrade.currency] < upgrade.cost", ng-click="buyUpgrade(upgrade)") Buy

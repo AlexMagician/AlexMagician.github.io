@@ -1,0 +1,91 @@
+{
+  "name": "Roguathia",
+  "description": "A small roguelike.",
+  "readme": "README.md",
+  "repository": "https://github.com/seiyria/Roguathia",
+  "version": "0.2.17",
+  "license": "MIT",
+  "authors": [
+    "Kyle Kemp <kyle@seiyria.com>"
+  ],
+  "devDependencies": {
+    "babel": "^5.8.34",
+    "babel-eslint": "^4.1.6",
+    "babelify": "^6.4.0",
+    "bower": "^1.6.8",
+    "browser-sync": "^2.9.11",
+    "browserify": "^12.0.1",
+    "chai": "^3.4.0",
+    "conventional-changelog": "^0.5.0",
+    "del": "^2.1.0",
+    "errorify": "^0.3.1",
+    "eslint-config-kellyirc": "^3.1.0",
+    "gulp": "~3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-bump": "^1.0.0",
+    "gulp-cached": "^1.1.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-filter": "~3.0.1",
+    "gulp-gh-pages": "~0.5.2",
+    "gulp-git": "^1.6.0",
+    "gulp-if": "^2.0.0",
+    "gulp-jade": "~1.1.0",
+    "gulp-minify-css": "~1.2.1",
+    "gulp-mocha": "^2.1.3",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-rename": "~1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-tag-version": "~1.3.0",
+    "gulp-util": "~3.0.6",
+    "run-sequence": "^1.1.4",
+    "through2": "^2.0.0",
+    "vinyl-paths": "^2.0.0",
+    "vinyl-source-stream": "~1.1.0",
+    "watchify": "^3.6.1"
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/bower/bin/bower install",
+    "start": "node ./node_modules/gulp/bin/gulp.js",
+    "build": "node ./node_modules/gulp/bin/gulp.js build",
+    "test": "node ./node_modules/gulp/bin/gulp.js check"
+  },
+  "gulp": {
+    "sass": "src/scss/*.scss",
+    "libjs": [
+      "./bower_components/angular/angular.min.js",
+      "./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+      "./bower_components/ngstorage/ngStorage.min.js",
+      "./bower_components/HackTimer/HackTimer.silent.min.js",
+      "./bower_components/HackTimer/HackTimerWorker.min.js"
+    ],
+    "libcss": [
+      "./bower_components/dos-strap/dist/css/bootstrap.min.css"
+    ],
+    "font": [
+      "./src/fonts/Fixedsys500c.woff"
+    ],
+    "favicon": [
+      "favicon.ico"
+    ],
+    "jade": [
+      "src/jade/**/*.jade"
+    ],
+    "js": [
+      "src/js/**/*.js"
+    ],
+    "testjs": [
+      "test/**/*.js"
+    ],
+    "entry": "./src/js/init.js",
+    "dist": "./dist/"
+  },
+  "dependencies": {
+    "bragi-browser": "0.0.12",
+    "dice.js": "^0.8.0",
+    "eventemitter2": "^0.4.14",
+    "lodash": "^3.10.1",
+    "rot-js": "0.6.0"
+  }
+}
