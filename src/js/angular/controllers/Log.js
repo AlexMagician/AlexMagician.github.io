@@ -39,13 +39,13 @@ module.controller('Log', ($scope, $localStorage) => {
   };
 
   GameState.on('gameend.victory', () => {
-    addMetaMessage('You win!');
-    addMetaMessage(`You earned ${GameState.spEarned} SP, ${GameState.kpEarned} KP, and ${GameState.vpEarned} VP.`);
+    addMetaMessage('Вы победили!');
+    addMetaMessage(`Вы заработали ${GameState.spEarned} SP, ${GameState.kpEarned} KP и ${GameState.vpEarned} VP.`);
   });
 
   GameState.on('gameend.gameover', () => {
-    addMetaMessage('Game over! Everyone died.');
-    addMetaMessage(`You earned ${GameState.spEarned} SP and ${GameState.kpEarned} KP.`);
+    addMetaMessage('Игра окончена. Все ваши персонажи погибли.');
+    addMetaMessage(`Вы заработали ${GameState.spEarned} SP и ${GameState.kpEarned} KP.`);
   });
 
   GameState.on('log', (logObj) => {

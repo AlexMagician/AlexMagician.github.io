@@ -33,8 +33,8 @@ module.controller('Upgrades', ($scope, $localStorage,$timeout, CurrencyDataManag
     const newState = curState = NewState();
 
     _.each(newState.unlocked.race.concat(newState.unlocked.profession), random => {
-      if(_.contains(UpgradeDataManager.upgrades, `Random: ${random}`)) return;
-      UpgradeDataManager.upgrades.push(`Random: ${random}`);
+      if(_.contains(UpgradeDataManager.upgrades, `Случайно: ${random}`)) return;
+      UpgradeDataManager.upgrades.push(`Случайно: ${random}`);
     });
 
     _.each(UpgradeDataManager.upgrades, name => {

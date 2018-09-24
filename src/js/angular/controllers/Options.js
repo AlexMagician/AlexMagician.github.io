@@ -7,7 +7,7 @@ module.controller('Options', ($scope) => {
   $scope.seppuku = () => {
     _.each(GameState.players, p =>  {
       if (!p.hp.atMin()) {
-        p.die({ name:'Seppuku' });
+        p.die({ name:'Самоубийство' });
       }
     });
   };

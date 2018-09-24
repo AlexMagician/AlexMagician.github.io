@@ -10,8 +10,8 @@ import Monster from '../definitions/monster';
 class Victory {
   static vp() { return 5; }
   static check() { return true; }
-  static get message() { return 'You survived!'; }
-  static get description() { return 'Survive!'; }
+  static get message() { return 'Вы выжили!'; }
+  static get description() { return 'Выживите!'; }
   static shouldTrigger() { return false; }
   static trigger() {}
   static mapAdditions() {}
@@ -22,8 +22,8 @@ export class Survival extends Victory {
   static vp() { return GameState.world.depth; }
   static requiredTurns() { return GameState.world.depth*1000; }
   static check() { return _.max(GameState.players, 'currentTurn').currentTurn >= this.requiredTurns(); }
-  static get message() { return `You survived ${this.requiredTurns()} turns.`; }
-  static get description() { return `Survive for ${this.requiredTurns()} turns.`; }
+  static get message() { return `Вы продержались необходимое время.`; }
+  static get description() { return `Выживите в течение ${this.requiredTurns()} ходов.`; }
 }
 
 export class StoneOfSelykFind extends Victory {
@@ -39,8 +39,8 @@ export class StoneOfSelykFind extends Victory {
   static trigger() {
     GameState.world.placeItemAtRandomLocation(new StoneOfSelyk(), GameState.currentFloor);
   }
-  static get message() { return `You found the Stone of Selyk.`; }
-  static get description() { return `Find the Stone of Selyk.`; }
+  static get message() { return `Вы нашли Кристалл Хоука.`; }
+  static get description() { return `Найдите Кристалл Хоука.`; }
 }
 
 export class SelykAltar extends Victory {
@@ -61,8 +61,8 @@ export class SelykAltar extends Victory {
   static trigger() {
     GameState.world.placeItemAtRandomLocation(new SelykCellarKey(), GameState.currentFloor);
   }
-  static get message() { return `You sacrificed yourself at the altar of Selyk.`; }
-  static get description() { return `Reach the altar of Selyk.`; }
+  static get message() { return `Вы добрались до Алтаря Хоука и принесли себя в жертву на нем.`; }
+  static get description() { return `Достигните Алтаря Хоука.`; }
   static mapStairs(i) { return [Tiles.StairsUp, i !== GameState.world.depth-1 ? Tiles.StairsDown : Tiles.SelykStairsDown]; }
 }
 
@@ -79,6 +79,6 @@ export class KillSelyk extends Victory {
   static trigger() {
     GameState.world.placeEntityAtRandomLocation(new Monster(0, 0, 0, Selyk.init()), GameState.currentFloor);
   }
-  static get message() { return `You killed Selyk.`; }
-  static get description() { return `Kill Selyk.`; }
+  static get message() { return `Вы убили Алекса Хоука.`; }
+  static get description() { return `Убейте Алекса Хоука.`; }
 }

@@ -11,10 +11,10 @@ export class Poison extends Attack {
   hitString(owner, target, damage, extra) {
     let psn = ``;
     if(extra && !target.hasTrait('PoisonResistance')) {
-      psn = ` ${target.name} got poisoned!`;
+      psn = ` ${target.name} отравлен!`;
       target.addUniqueBehavior(Behaviors.Poisoned());
     }
-    return `${owner.name} hit ${target.name} for ${damage} damage!${psn}`;
+    return `${owner.name} ударил ${target.name} на ${damage} единиц урона!${psn}`;
   }
   hitCallback() {
     return true;
@@ -25,10 +25,10 @@ export class ElectricTouch extends Attack {
   hitString(owner, target, damage, extra) {
     let zap = ``;
     if(extra) {
-      zap = ` ${target.name} got zapped!`;
+      zap = ` ${target.name} ударен молнией!`;
       target.addUniqueBehavior(Behaviors.Stunned());
     }
-    return `${owner.name} hit ${target.name} for ${damage} damage!${zap}`;
+    return `${owner.name} ударил ${target.name} молнией на ${damage} единиц урона!${zap}`;
   }
   hitCallback() {
     return true;
@@ -37,7 +37,7 @@ export class ElectricTouch extends Attack {
 
 export class Explode extends Attack {
   hitString(owner, target, damage) {
-    return `${owner.name} explodes! ${target.name} took ${damage} damage.`;
+    return `${owner.name} взрывается! ${target.name} получает ${damage} единиц урона.`;
   }
 
   canHit() { return true; }
@@ -51,10 +51,10 @@ export class SeductiveTouch extends Attack {
   hitString(owner, target, damage, extra) {
     let sed = ``;
     if(extra) {
-      sed = ` ${target.name} is seduced!`;
+      sed = ` ${target.name} соблазнен!`;
       target.addUniqueBehavior(Behaviors.Seduced());
     }
-    return `${owner.name} hit ${target.name} for ${damage} damage!${sed}`;
+    return `${owner.name} соблазняет печеньками ${target.name} на ${damage} единиц урона!${sed}`;
   }
   hitCallback() {
     return true;
@@ -63,7 +63,7 @@ export class SeductiveTouch extends Attack {
 
 export class TelepathicBlast extends Attack {
   hitString(owner, target, damage) {
-    return `${owner.name} got blasted by ${target.name}'s psychic blast for ${damage} damage!`;
+    return `${owner.name} снесен кинетической волной ${target.name} на ${damage} единиц урона!`;
   }
   hitCallback(owner) {
     return owner.hasTrait('Telepathy');

@@ -65,7 +65,7 @@ class StealsBehavior extends Behavior {
     });
 
     if(didSteal) {
-      MessageQueue.add({ message: `${me.name} stole ${item.name} from ${didSteal.name}!`, type: MessageTypes.COMBAT });
+      MessageQueue.add({ message: `${me.name} стащил ${item.name} у ${didSteal.name}!`, type: MessageTypes.COMBAT });
       didSteal.removeFromInventory(item);
       me.addToInventory(item);
     }

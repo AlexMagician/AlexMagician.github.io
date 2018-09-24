@@ -4,53 +4,53 @@ import Settings from './settings';
 
 const conducts = [
   // breakable conducts
-  { check: (player) => !player.brokenConduct.stubborn, affirmMessage: 'You never changed equipment.' },
-  { check: (player) => !player.brokenConduct.wieldedWeapon, affirmMessage: 'You never hit with a wielded weapon.' },
-  { check: (player) => !player.brokenConduct.pacifist, affirmMessage: 'You %were a pacifist.' },
-  { check: (player) => !player.brokenConduct.nudist, affirmMessage: 'You never equipped armor.' },
-  { check: (player) => !player.brokenConduct.celibate, affirmMessage: 'You %were celibate.' },
-  { check: (player) => player.brokenConduct.lifeSave, affirmMessage: 'Your life %was saved.' },
+  { check: (player) => !player.brokenConduct.stubborn, affirmMessage: 'Вы ни разу не меняли снаряжение.' },
+  { check: (player) => !player.brokenConduct.wieldedWeapon, affirmMessage: 'Вас ни разу не атаковали физичексим оружием.' },
+  { check: (player) => !player.brokenConduct.pacifist, affirmMessage: 'Вы были пацифистом.' },
+  { check: (player) => !player.brokenConduct.nudist, affirmMessage: 'Вы ни разу не экипировали броню.' },
+  { check: (player) => !player.brokenConduct.celibate, affirmMessage: 'Вы были одиноки.' },
+  { check: (player) => player.brokenConduct.lifeSave, affirmMessage: 'Ваша жизнь была спасена.' },
 
   // traits
-  { check: (player) => player.hasTrait('Infravision'), affirmMessage: 'You %had infravision.' },
-  { check: (player) => player.hasTrait('Protection'), affirmMessage: 'You %had protection.' },
-  { check: (player) => player.hasTrait('Clairvoyance'), affirmMessage: 'You %had clairvoyance.' },
-  { check: (player) => player.hasTrait('Warning'), affirmMessage: 'You %were warned.' },
-  { check: (player) => player.hasTrait('Telepathy'), affirmMessage: 'You %were telepathic.' },
-  { check: (player) => player.hasTrait('Stealth'), affirmMessage: 'You %were stealthy.' },
-  { check: (player) => player.hasTrait('Invisible'), affirmMessage: 'You %were invisible.' },
-  { check: (player) => player.hasTrait('SeeInvisible'), affirmMessage: 'You %could see invisible.' },
-  { check: (player) => player.getSpeed() > Settings.game.baseSpeed, affirmMessage: 'You %were fast.' },
-  { check: (player) => player.getSpeed() < Settings.game.baseSpeed, affirmMessage: 'You %were slow.' },
+  { check: (player) => player.hasTrait('Infravision'), affirmMessage: 'Вы обладали инфразрением.' },
+  { check: (player) => player.hasTrait('Protection'), affirmMessage: 'Вы обладали стойкостью.' },
+  { check: (player) => player.hasTrait('Clairvoyance'), affirmMessage: 'Вы обладали ясновидением.' },
+  { check: (player) => player.hasTrait('Warning'), affirmMessage: 'Вы были осторожны.' },
+  { check: (player) => player.hasTrait('Telepathy'), affirmMessage: 'Вы владели телепатией.' },
+  { check: (player) => player.hasTrait('Stealth'), affirmMessage: 'Вы были незаметным.' },
+  { check: (player) => player.hasTrait('Invisible'), affirmMessage: 'Вы были невидимы.' },
+  { check: (player) => player.hasTrait('SeeInvisible'), affirmMessage: 'Вы могли видеть невидимое.' },
+  { check: (player) => player.getSpeed() > Settings.game.baseSpeed, affirmMessage: 'Вы были быстры.' },
+  { check: (player) => player.getSpeed() < Settings.game.baseSpeed, affirmMessage: 'Вы были медленным.' },
 
-  { check: (player) => player.hasTrait('PoisonResistance'), affirmMessage: 'You %were poison resistant.' },
-  { check: (player) => player.hasTrait('ShockResistance'), affirmMessage: 'You %were shock resistant.' },
-  { check: (player) => player.hasTrait('FireResistance'), affirmMessage: 'You %were fire resistant.' },
-  { check: (player) => player.hasTrait('AcidResistance'), affirmMessage: 'You %were acid resistant.' },
-  { check: (player) => player.hasTrait('IceResistance'), affirmMessage: 'You %were ice resistant.' },
+  { check: (player) => player.hasTrait('PoisonResistance'), affirmMessage: 'Вы были невосприимчивым к яду.' },
+  { check: (player) => player.hasTrait('ShockResistance'), affirmMessage: 'Вы были невосприимчивы к шоку.' },
+  { check: (player) => player.hasTrait('FireResistance'), affirmMessage: 'Вы были невосприимчивы к огню.' },
+  { check: (player) => player.hasTrait('AcidResistance'), affirmMessage: 'Вы были невосприимчивы к кислоте.' },
+  { check: (player) => player.hasTrait('IceResistance'), affirmMessage: 'Вы были невосприимчивы ко льду.' },
 
   // statuses
-  { check: (player) => player.hasBehavior('Stunned'), affirmMessage: 'You %were stunned.' },
-  { check: (player) => player.hasBehavior('Poisoned'), affirmMessage: 'You %were poisoned.' },
-  { check: (player) => player.hasBehavior('Seduced'), affirmMessage: 'You %were seduced.' },
+  { check: (player) => player.hasBehavior('Stunned'), affirmMessage: 'Вас оглушили.' },
+  { check: (player) => player.hasBehavior('Poisoned'), affirmMessage: 'Вас отравили.' },
+  { check: (player) => player.hasBehavior('Seduced'), affirmMessage: 'Вас соблазнили.' },
 
   // alignment
-  { check: (player) => player.getAlign() === 0, affirmMessage: 'You %were neutral.' },
-  { check: (player) => player.getAlign() < 0, affirmMessage: 'You %were evil.' },
-  { check: (player) => player.getAlign() > 0, affirmMessage: 'You %were good.' },
+  { check: (player) => player.getAlign() === 0, affirmMessage: 'Вы были нейтральны.' },
+  { check: (player) => player.getAlign() < 0, affirmMessage: 'Вы были злым.' },
+  { check: (player) => player.getAlign() > 0, affirmMessage: 'Вы были добрым.' },
 
   // you probably always see this
-  { check: (player) => player.hp.atMin(), affirmMessage: 'You died.' }
+  { check: (player) => player.hp.atMin(), affirmMessage: 'Вы погибли.' }
 ];
 
 export default (player) => {
   const finalConduct = [];
 
   const tenses = [
-    { split: '%could', past: 'could', now: 'can' },
-    { split: '%were',  past: 'were',  now: 'are' },
-    { split: '%was',   past: 'was',   now: 'will be' },
-    { split: '%had',   past: 'had',   now: 'have' }
+    { split: '%could', past: 'могли', now: 'можете' },
+    { split: '%were',  past: 'были',  now: '' },
+    { split: '%was',   past: 'был',   now: 'будете' },
+    { split: '%had',   past: 'имели',   now: 'имеете' }
   ];
 
   const adjustMessage = (msg) => _.reduce(tenses, ((prev, obj) => prev.split(obj.split).join(player.hp.atMin() ? obj.past : obj.now)), msg);

@@ -11,7 +11,7 @@ class SinkKickEffect extends Effect {}
 export class BasicEffect extends SinkKickEffect {
   static get probability() { return 7; }
   static use(entity) {
-    this.msg(entity, `${entity.name} kicks the sink and it vibrates nosily.`);
+    this.msg(entity, `${entity.name} ударяет чашу фонтана, и та легонько вибрирует.`);
     entity.alertAllInRange(50);
   }
 }
@@ -20,7 +20,7 @@ export class RingGen extends SinkKickEffect {
   static get probability() { return 3; }
   static use(entity, sink) {
     if(sink._gotRing) {
-      this.msg(entity, `${entity.name} kicked murky water out of the sink.`);
+      this.msg(entity, `${entity.name} выплеснул странную воду из чаши.`);
       return;
     }
     sink._gotRing = true;
@@ -28,14 +28,14 @@ export class RingGen extends SinkKickEffect {
     entity.exercise('dex');
     const ring = RandomRing({ bucName: 'uncursed' });
     GameState.world.moveItem(ring, entity.x, entity.y, entity.z);
-    this.msg(entity, `${entity.name} found a ring shining in the murky goop!`);
+    this.msg(entity, `${entity.name} нашел в ней кольцо!`);
   }
 }
 
 export class BadKick extends SinkKickEffect {
   static get probability() { return 1; }
   static use(entity) {
-    this.msg(entity, `${entity.name} fumbled while kicking the sink.`);
+    this.msg(entity, `${entity.name} поранился, когда ударял чашу фонтана. Как неуклюже.`);
     entity.alertAllInRange(50);
     entity.abuse('dex');
     entity.abuse('wis');
@@ -50,7 +50,7 @@ export class SpawnsPudding extends SinkKickEffect {
     const validTile = _.sample(this.getEmptyTilesInRange(sink));
 
     if(!validTile) return;
-    this.msg(entity, `${entity.name} caused black ooze to rise out of the sink!`);
+    this.msg(entity, `${entity.name} вызвал какое-то черное существо из фонтана!`);
     MonsterSpawner.spawnSingle('blackPudding', validTile);
   }
 }

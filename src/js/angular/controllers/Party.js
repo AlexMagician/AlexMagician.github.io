@@ -49,41 +49,41 @@ module.controller('PartyMemberEdit', ($scope, $uibModalInstance, TemplateDataMan
   $scope.player = player;
 
   $scope.genders = [
-    { key: 'Random', val: undefined },
-    { key: 'Male', val: 'Male' },
-    { key: 'Female', val: 'Female' }
+    { key: 'Случайно', val: undefined },
+    { key: 'Мужской', val: 'Male' },
+    { key: 'Женский', val: 'Female' }
   ];
 
   $scope.aligns = [
-    { key: 'Random', val: undefined },
-    { key: 'Eviler', val: -200 },
-    { key: 'Evil', val: -100 },
-    { key: 'Neutral', val: 0 },
-    { key: 'Good', val: 100 },
-    { key: 'Gooder', val: 200 }
+    { key: 'Случайно', val: undefined },
+    { key: 'Агрессивный', val: -200 },
+    { key: 'Злой', val: -100 },
+    { key: 'Нейтральный', val: 0 },
+    { key: 'Добрый', val: 100 },
+    { key: 'Миролюбивый', val: 200 }
   ];
 
-  $scope.professions = upgradesBySplit('Class:');
+  $scope.professions = upgradesBySplit('Класс:');
 
-  $scope.races = upgradesBySplit('Race:');
+  $scope.races = upgradesBySplit('Раса:');
 
   $scope.colors = [
-    { key: 'Default', val: undefined },
-    { key: 'Red', val: '#f00' },
-    { key: 'Blue', val: '#00f' },
-    { key: 'Green', val: '#0f0' },
-    { key: 'Yellow', val: '#ff0' },
-    { key: 'Cyan', val: '#0ff' },
-    { key: 'Magenta', val: '#f0f' }
+    { key: 'По умолчанию', val: undefined },
+    { key: 'Красный', val: '#f00' },
+    { key: 'Синий', val: '#00f' },
+    { key: 'Зеленый', val: '#0f0' },
+    { key: 'Желтый', val: '#ff0' },
+    { key: 'Бирюзовый', val: '#0ff' },
+    { key: 'Пурпурный', val: '#f0f' }
   ];
 
-  $scope.greater = upgradesBySplit('Trait: G.', 'None');
-  $scope.lesser = upgradesBySplit('Trait: L.', 'None');
-  $scope.utility = upgradesBySplit('Trait: U.', 'None');
-  $scope.buff = upgradesBySplit('Buff:', 'None');
+  $scope.greater = upgradesBySplit('Ст. свойство', 'Нет');
+  $scope.lesser = upgradesBySplit('Мл. свойство', 'Нет');
+  $scope.utility = upgradesBySplit('Сит. свойство', 'Нет');
+  $scope.buff = upgradesBySplit('Усиление:', 'Нет');
 
   $scope.ais = [
-    { key: 'Explore Dungeon', val: undefined },
-    { key: 'Wander', val: 'Wander' }
+    { key: 'Изучать подземелье', val: undefined },
+    { key: 'Бродить', val: 'Wander' }
   ];
 });

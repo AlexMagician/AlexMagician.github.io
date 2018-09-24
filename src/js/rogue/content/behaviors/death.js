@@ -77,10 +77,10 @@ class ExplodesBehavior extends Behavior {
 
   die(me) {
     if(ROT.RNG.getPercentage() > this.percent) {
-      MessageQueue.add({ message: `${me.name} explodes a little bit.`, type: MessageTypes.COMBAT });
+      MessageQueue.add({ message: `${me.name} тихо сгорает.`, type: MessageTypes.COMBAT });
       return;
     }
-    MessageQueue.add({ message: `${me.name} violently explodes!`, type: MessageTypes.COMBAT });
+    MessageQueue.add({ message: `${me.name} взрывается!`, type: MessageTypes.COMBAT });
     _.each(GameState.world.getValidEntitiesInRange(me.x, me.y, me.z, this.range), (entity) => {
       if(me === entity || entity.hp.atMin()) return; // infinite loop prevention
       entity.takeDamage(Roll(this.roll), me);
@@ -96,7 +96,7 @@ class LifeSaveBehavior extends Behavior {
   takeDamage(me) {
     if(me.hp.atMin()) {
       me.hp.toMax();
-      MessageQueue.add({ message: `${me.name}'s life was saved!`, type: MessageTypes.COMBAT });
+      MessageQueue.add({ message: `$Жизнь {me.name} спасена!`, type: MessageTypes.COMBAT });
       me.breakConduct('lifeSave');
 
       if(this.numUses-- <= 0) me.removeBehavior(this);

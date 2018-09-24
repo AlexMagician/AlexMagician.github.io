@@ -12,7 +12,7 @@ class ThroneEffect extends Effect {}
 export class Identify extends ThroneEffect {
   static get probability() { return 1; }
   static use(entity) {
-    this.msg(entity, `${entity.name} was granted insight!`);
+    this.msg(entity, `${entity.name} озарен вдохновением свыше!`);
     _.each(entity.inventory, item => {
       if(ROT.RNG.getPercentage() <= 20) return;
       item.identify();
@@ -24,7 +24,7 @@ export class HealthGainBonus extends ThroneEffect {
   static get probability() { return 1; }
   static use(entity) {
     const hpGained = Roll('1d10');
-    this.msg(entity, `${entity.name} feels much, much better!`);
+    this.msg(entity, `${entity.name} чувствует себя гораздо лучше!`);
     entity.hp.max += hpGained;
     entity.hp.toMax();
   }
@@ -36,7 +36,7 @@ export class Ouch extends ThroneEffect {
     const hpLost = Roll('1d10');
     const statLost = Roll('1d4 + 2');
     const stat = _.sample(['con', 'dex', 'int', 'wis', 'str', 'cha', 'luk']);
-    this.msg(entity, `${entity.name} feels a painful surge!`);
+    this.msg(entity, `${entity.name} чувствует, как его драгоценные очки характеристик куда-то исчезают...`);
     entity.takeDamage(hpLost, { name: 'throne' });
     entity[stat] -= statLost;
   }
@@ -50,7 +50,7 @@ export class Shocking extends ThroneEffect {
 
     entity.abuse('con', '1d1');
     entity.takeDamage(Roll(damageRoll), { name: 'throne' });
-    this.msg(entity, `${entity.name} was viciously shocked!`);
+    this.msg(entity, `${entity.name} получил неслабый разряд током!`);
   }
 }
 
@@ -58,11 +58,11 @@ export class Clarity extends ThroneEffect {
   static get probability() { return 1; }
   static use(entity) {
     if(entity.hasTrait('SeeInvisible')) {
-      this.msg(entity, `${entity.name} has a strange sensation, then it passes.`);
+      this.msg(entity, `${entity.name} чувствует озарение.`);
       return;
     }
     entity.addTrait(Traits.SeeInvisible({ level: 5 }));
-    this.msg(entity, `${entity.name} has a moment of clarity.`);
+    this.msg(entity, `${entity.name} теперь видит невидимое.`);
   }
 }
 
@@ -70,19 +70,19 @@ export class LoseThatGold extends ThroneEffect {
   static get probability() { return 1; }
   static use(entity) {
     if(entity.gold === 0) {
-      this.msg(entity, `${entity.name} has a strange sensation, then it passes.`);
+      this.msg(entity, `${entity.name} чувствует удивление.`);
       return;
     }
 
     entity.gold = 0;
-    this.msg(entity, `${entity.name} lost a lotta gold!`);
+    this.msg(entity, `${entity.name} куда-то дел все свое золото!`);
   }
 }
 
 export class RandomTeleport extends ThroneEffect {
   static get probability() { return 1; }
   static use(entity) {
-    this.msg(entity, `${entity.name} feels a wrenching sensation!`);
+    this.msg(entity, `${entity.name} куда-то пропал!`);
     GameState.world.placeEntityAtRandomLocation(entity);
   }
 }
@@ -93,7 +93,7 @@ export class SpawnCreatures extends ThroneEffect {
 
     const monsters = ['kobold', 'gnome', 'goblin', 'hobgoblin', 'orc'];
 
-    this.msg(entity, `${entity.name} summoned a throne room audience!`);
+    this.msg(entity, `${entity.name} призвал толпу монстров!`);
     const spawned = Roll('1d10');
 
     const validTiles = _.sample(this.getEmptyTilesInRange(entity, 5), spawned);

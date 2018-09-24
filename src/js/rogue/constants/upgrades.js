@@ -5,12 +5,12 @@ import Races from '../content/races/_all';
 import * as Traits from '../content/traits/_all';
 
 const upgrades = [
-  { name: 'Rename Tag',
-    help: 'Allow for renaming of player characters.',
+  { name: 'Смена имени',
+    help: 'Позволяет переименовывать персонажей.',
     cost: 100000,
     currency: 'sp' },
-  { name: 'Color Tag',
-    help: 'Allow for changing of player characters color.',
+  { name: 'Смена цвета',
+    help: 'Позволяет менять цвет значка персонажей.',
     cost: 100000,
     currency: 'sp' }
 ];
@@ -18,17 +18,17 @@ const upgrades = [
 // SP
 _.each(_.keys(Professions), profession => {
   upgrades.push(
-    { name: `Random: ${profession}`,
-      help: `This class (${profession}) will show up randomly.`,
+    { name: `Случайный: ${profession}`,
+      help: `Класс (${profession}) теперь будет попадаться среди случайных классов.`,
       cost: 10000,
       currency: 'sp',
       operate: (upgradeData) => upgradeData.unlocked.profession.push(profession)
     });
 
   upgrades.push(
-    { name: `Class: ${profession}`,
-      help: `This class (${profession}) can be selected for all party members.`,
-      req: `Random: ${profession}`,
+    { name: `Класс: ${profession}`,
+      help: `Класс (${profession}) теперь можно присвоить любому персонажу.`,
+      req: `Случайный: ${profession}`,
       unlockedProfession: profession,
       cost: 50000,
       currency: 'sp',
@@ -38,17 +38,17 @@ _.each(_.keys(Professions), profession => {
 
 _.each(_.keys(Races), race => {
   upgrades.push(
-    { name: `Random: ${race}`,
-      help: `This race (${race}) will show up randomly.`,
+    { name: `Случайный: ${race}`,
+      help: `Эта раса (${race}) теперь будет появляться среди случайных рас.`,
       cost: 20000,
       currency: 'sp',
       operate: (upgradeData) => upgradeData.unlocked.race.push(race)
     });
 
   upgrades.push(
-    { name: `Race: ${race}`,
-      help: `This race (${race}) can be selected for all party members.`,
-      req: `Random: ${race}`,
+    { name: `Раса: ${race}`,
+      help: `Эту расу (${race}) теперь можно присвоить любому персонажу.`,
+      req: `Случайный: ${race}`,
       unlockedRace: race,
       cost: 80000,
       currency: 'sp',
@@ -58,15 +58,15 @@ _.each(_.keys(Races), race => {
 
 _.each(['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA', 'LUK'], stat => {
   upgrades.push({
-    name: `Trait: L. ${stat}`,
-    help: `Lesser ${stat} grants +1 ${stat} when assigned to a character.`,
+    name: `Свойство: Мл. ${stat}`,
+    help: `Младшее свойство ${stat} дает +1 к ${stat}, будучи присвоенным персонажу.`,
     cost: 5000,
     currency: 'sp'
   });
 
   upgrades.push({
-    name: `Trait: G. ${stat}`,
-    help: `Greater ${stat} grants +3 ${stat} when assigned to a character.`,
+    name: `Свойство: Ст. ${stat}`,
+    help: `Старшее свойство ${stat} дает +3 к ${stat}, будучи присвоенным персонажу.`,
     cost: 50000,
     currency: 'sp'
   });
@@ -74,46 +74,46 @@ _.each(['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA', 'LUK'], stat => {
 
 _.each(_.keys(Traits), trait => {
   upgrades.push({
-    name: `Trait: U. ${trait}`,
-    help: `Grants utility for a basic level of ${trait} when assigned to a character`,
+    name: `Свойство: Сит. ${trait}`,
+    help: `Дает ситуационное свойство ${trait} базового уровня при назначении персонажу.`,
     cost: 100000,
     currency: 'sp'
   });
 });
 
 upgrades.push({
-  name: 'Buff: Proficient',
-  help: 'The assigned character is more proficient with every weapon.',
+  name: 'Усиление: Мастерство',
+  help: 'Данный персонаж лучше обращается с любым оружием.',
   cost: 100000,
   currency: 'sp'
 });
 
 upgrades.push({
-  name: 'Buff: Higher Level',
-  help: 'The assigned character starts at a higher level.',
+  name: 'Усиление: Уровень',
+  help: 'Данный персонаж начинает игру с более высокого уровня.',
   cost: 150000,
   currency: 'sp'
 });
 
 upgrades.push({
-  name: 'Buff: Enchanted Gear',
-  help: 'The assigned character gets an enchantment on all of their gear.',
+  name: 'Усиление: Зачарованные вещи',
+  help: 'Данный персонаж получает зачарования на все свои вещи.',
   cost: 200000,
   currency: 'sp'
 });
 
 upgrades.push({
-  name: 'Buff: Charged Gear',
-  help: 'The assigned character gets more charges on all of their gear.',
+  name: 'Усиление: Заряженные вещи',
+  help: 'Данный персонаж получает больше зарядов на всех своих вещах.',
   cost: 250000,
   currency: 'sp'
 });
 
 for(let i = 0; i < 3; i++) {
   upgrades.push({
-    name: `Bigger Party ${i+1}`,
-    help: `Add one member to your adventuring party.`,
-    req: i > 0 ? `Bigger Party ${i}` : null,
+    name: `Большая группа ${i+1}`,
+    help: `Добавляет одного дополнительного персонажа в группу. Вступает в силу со следующей игры.`,
+    req: i > 0 ? `Большая группа ${i}` : null,
     currency: 'sp',
     cost: (i+2) * 150000,
     operate: (upgradeData) => upgradeData.extra.players++
@@ -124,9 +124,9 @@ for(let i = 0; i < 3; i++) {
 // KP
 for(let i = 0; i < 5; i++) {
   upgrades.push({
-    name: `More Monsters ${i+1}`,
-    help: `More monsters will be able to spawn in the dungeon.`,
-    req: i > 0 ? `More Monsters ${i}` : null,
+    name: `Больше монстров ${i+1}`,
+    help: `Теперь в подземелье появляется больше монстров.`,
+    req: i > 0 ? `Больше монстров ${i}` : null,
     currency: 'kp',
     cost: (i+1) * 20000,
     operate: (upgradeData) => upgradeData.dungeon.monsterLimit += 5
@@ -135,9 +135,9 @@ for(let i = 0; i < 5; i++) {
 
 for(let i = 0; i < 10; i++) {
   upgrades.push({
-    name: `Darker Monsters ${i+1}`,
-    help: `More difficult monsters will be able to spawn in the dungeon.`,
-    req: i > 0 ? `Darker Monsters ${i}` : null,
+    name: `Темные монстры ${i+1}`,
+    help: `Более сильные монстры начнут появляться в подземелье.`,
+    req: i > 0 ? `Темные монстры ${i}` : null,
     currency: 'kp',
     cost: (i+1) * 10000,
     operate: (upgradeData) => upgradeData.dungeon.maxDifficulty += 5
@@ -149,9 +149,9 @@ for(let i = 0; i < 10; i++) {
 _.each(['throne', 'fountain', 'sink'], feat => {
   for(let i = 0; i < 5; i++) {
     upgrades.push({
-      name: `Feature: ${_.capitalize(feat)} ${i+1}`,
-      help: `The dungeon will spawn ${feat}s more frequently.`,
-      req: i > 0 ? `Feature: ${_.capitalize(feat)} ${i}` : null,
+      name: `Объект: ${_.capitalize(feat)} ${i+1}`,
+      help: `Эта структура будет появляться в подземелье чаще.`,
+      req: i > 0 ? `Объект: ${_.capitalize(feat)} ${i}` : null,
       currency: 'vp',
       cost: (i+1) * 10,
       operate: (upgradeData) => upgradeData.dungeon[`${feat}spawnChance`] += 200 // +2%
@@ -161,9 +161,9 @@ _.each(['throne', 'fountain', 'sink'], feat => {
 
 for(let i = 0; i < 9; i++) {
   upgrades.push({
-    name: `Deeper Dungeon ${i+1}`,
-    help: `The dungeon will get 10 floors deeper.`,
-    req: i > 0 ? `Deeper Dungeon ${i}` : null,
+    name: `Глубокое подземелье ${i+1}`,
+    help: `Данж станет глубже на 10 этажей. Вступает в силу со следующей игры.`,
+    req: i > 0 ? `Глубокое подземелье ${i}` : null,
     currency: 'vp',
     cost: (i+1) * 20,
     operate: (upgradeData) => upgradeData.dungeon.depth += 10
@@ -172,9 +172,9 @@ for(let i = 0; i < 9; i++) {
 
 for(let i = 0; i < 9; i++) {
   upgrades.push({
-    name: `Squarer Dungeon ${i+1}`,
-    help: `The dungeon will get wider and taller.`,
-    req: i > 0 ? `Squarer Dungeon ${i}` : null,
+    name: `Широкое подземелье ${i+1}`,
+    help: `Данж станет шире и выше.`,
+    req: i > 0 ? `Широкое подземелье ${i}` : null,
     currency: 'vp',
     cost: (i+1) * 5,
     operate: (upgradeData) => upgradeData.dungeon.squarity += 10
@@ -183,9 +183,9 @@ for(let i = 0; i < 9; i++) {
 
 for(let i = 0; i < 5; i++) {
   upgrades.push({
-    name: `Lost and Found ${i+1}`,
-    help: `More items got lost by previous adventurers, so you can find them!`,
-    req: i > 0 ? `Lost and Found ${i}` : null,
+    name: `Потеряны и найдены ${i+1}`,
+    help: `Предыдущие персонажи оставят больше вещей, и вы сможете их найти!`,
+    req: i > 0 ? `Потеряны и найдены ${i}` : null,
     currency: 'vp',
     cost: (i+1) * 15,
     operate: (upgradeData) => upgradeData.dungeon.itemsInDungeon += 4
@@ -194,9 +194,9 @@ for(let i = 0; i < 5; i++) {
 
 for(let i = 0; i < 5; i++) {
   upgrades.push({
-    name: `Perception Boost ${i+1}`,
-    help: `Lost items are more likely to be out in the open.`,
-    req: i > 0 ? `Perception Boost ${i}` : null,
+    name: `Усиление внимания ${i+1}`,
+    help: `Вы сможете видеть больше вещей.`,
+    req: i > 0 ? `Усиление внимания ${i}` : null,
     currency: 'vp',
     cost: (i+1) * 25,
     operate: (upgradeData) => upgradeData.dungeon.itemDropChance += 15
@@ -205,9 +205,9 @@ for(let i = 0; i < 5; i++) {
 
 for(let i = 0; i < 10; i++) {
   upgrades.push({
-    name: `Faster Respawn ${i+1}`,
-    help: `Respawn faster so the dungeon can eat you again faster.`,
-    req: i > 0 ? `Faster Respawn ${i}` : null,
+    name: `Быстрое возрождение ${i+1}`,
+    help: `Сокращает время возрождения, чтобы данж мог скушоть ваших героев быстрее.`,
+    req: i > 0 ? `Быстрое возрождение ${i}` : null,
     currency: 'vp',
     cost: (i+1) * 25,
     operate: (upgradeData) => upgradeData.extra.respawnTime += 1

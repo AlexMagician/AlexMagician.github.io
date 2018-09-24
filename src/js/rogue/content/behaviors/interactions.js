@@ -18,7 +18,7 @@ class PickUpItemsBehavior extends Behavior {
       if(this.blacklist.length && _.contains(this.blacklist, item.getType())) return;
       GameState.world.removeItem(item);
       me.addToInventory(item);
-      MessageQueue.add({ message: `${me.name} picked up ${item.name}.`, type: MessageTypes.ITEM });
+      MessageQueue.add({ message: `${me.name} подбирает ${item.name}.`, type: MessageTypes.ITEM });
     }).value();
   }
 }
